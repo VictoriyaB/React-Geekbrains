@@ -1,7 +1,7 @@
 import './message.css'
 
-function Message (props) {
-    return <span className="message">{props.message}</span>
+function Message ({ message }) {
+    return <span className="message">{message}</span>
 }
 
 export default Message;
