@@ -1,7 +1,7 @@
-import './message.css'
+import React from "react";
 
-function Message ({ message }) {
-    return <span className="message">{message}</span>
-}
-
-export default Message;
+export const Message = ({ text, author }) => (
+    <div>
+        {author}: {text}
+    </div>
+);
