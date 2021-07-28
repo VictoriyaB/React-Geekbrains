@@ -1,5 +1,5 @@
 import './messageForm.css';
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export const MessageForm = ({ onSendMessage }) => {
     const [value, setvalue] = useState('');
@@ -8,7 +8,7 @@ export const MessageForm = ({ onSendMessage }) => {
         setvalue(event.target.value);
     
     const handleSubmit = (event) => {
-        event.preventDefolt();
+        event.preventDefault();
         onSendMessage({
             author: 'Me',
             text: value,
@@ -18,9 +18,9 @@ export const MessageForm = ({ onSendMessage }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={value} onChange={handleChange}/>
-            <input type="submit"/>
+        <form className="messageForm" onSubmit={handleSubmit}>
+            <input className="messageInput" type="text" placeholder="Введите сообщение" value={value} onChange={handleChange}/>
+            <button className="button" type="submit">Отправить</button>
         </form>
     )
 
