@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,15 +13,28 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.messageChat {
+  height: 500px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: rgba(255,255,255,.2); 
+  border-radius: 5px;
+}
+.messageChat:hover{
+  overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	-moz-overflow-scrolling: touch;
+	-ms-overflow-scrolling: touch;
+	-o-overflow-scrolling: touch;
+}
+.messageChat::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 7px;
+}
+.messageChat::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	background-color: rgba(0,0,0,0.5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

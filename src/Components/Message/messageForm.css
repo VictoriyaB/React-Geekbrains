@@ -1,0 +1,36 @@
+.messageForm{
+    display: flex;
+    justify-content:center;
+    margin-top: 10px;
+    width: 500px;
+    height: 40px; 
+}
+
+.messageInput  {
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    margin-right: 5px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.button {
+    background-color: #282c34;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.button:hover {
+    background-color: rgba(255,255,255,.2); 
+}
+
+.button:active { 
+    background: white; 
+    color:#282c34
+}
