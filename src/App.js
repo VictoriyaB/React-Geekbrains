@@ -1,10 +1,14 @@
 import './App.css';
 import { useCallback, useEffect, useState } from 'react';
+import { MessageList } from './Components/Message/MessageList';
 import { MessageForm } from './Components/Message/MessageForm';
-import { Message } from './Components/Message/Message';
+import { ChatList } from './Components/Message/ChatList';
+
+
 
 function App() {
-  const [messageList, setMessageList] = useState([{author:'robot', text:'Привет! Купи слона!', id:123}]);
+  
+  const [messageList, setMessageList] = useState([{author:'robot', text:'Привет! Купи слона!', id:Date.now()}]);
 
   const handleSendMessage = useCallback((newMessage) => {
     setMessageList([...messageList, newMessage]);
@@ -22,19 +26,18 @@ function App() {
         setMessageList([...messageList, robotmess]);
       }, 1000); 
     }
+    return () => clearTimeout();
   }, [messageList]);
 
-  const renderMessageList = useCallback((mess) =>(
-    <Message text={mess.text} author={mess.author} key={mess.id}/>
-  ), []);
-
+  
   return (
     <div className="App">
       <header className="App-header">
-         <div className="messageChat">
-         {messageList.map(renderMessageList)} 
-         </div>
-         <MessageForm  onSendMessage={handleSendMessage}/>
+        <ChatList/>
+        <div>
+        <MessageList messageList={messageList} />
+        <MessageForm  onSendMessage={handleSendMessage}/>
+        </div>
       </header>
     </div>
   );
