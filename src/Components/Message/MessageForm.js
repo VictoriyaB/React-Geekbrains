@@ -12,7 +12,8 @@ const useStyles = makeStyles({
         marginRight: '10px', 
         '& label.MuiFormLabel-root': {color: '#fafafa', fontSize: 12},
         '& label.Mui-focused': {color: '#fafafa'},
-        '& .MuiFilledInput-underline:after': {borderColor: '#e53935'}
+        '& .MuiFilledInput-underline:after': {borderColor: '#e53935'},
+        '& .MuiInputBase-input': {color: '#fafafa'}
     },
     
     buttonRoot: {
