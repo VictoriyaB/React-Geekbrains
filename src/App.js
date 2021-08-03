@@ -34,7 +34,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <ChatList/>
-        <div>
+        <div className="messageList-wrapper">
         <MessageList messageList={messageList} />
         <MessageForm  onSendMessage={handleSendMessage}/>
         </div>
