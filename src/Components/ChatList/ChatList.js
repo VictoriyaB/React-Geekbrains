@@ -1,36 +1,29 @@
 import './chatList.css'
-import React, { useCallback, useState } from "react";
+import React from "react";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
+import { Link } from 'react-router-dom';
 
+export const ChatList = ({ chats }) => {
 
-export const ChatList = () => {
-
-    const chatUsers = [
-        {author: 'Robot', id: 123, img: '/static/images/avatar/123.jpg'},
-        {author: 'User1', id: 124, img: null},
-        {author: 'User2', id: 125, img: null},
-        {author: 'User3', id: 126, img: null}
-    ];
-
-    const [chats, setChats] = useState(chatUsers);
-
-    const renderChatList = useCallback((chats) => (
+    const renderChatList = (chats)=> (
         <ListItem key={chats.id}>
-            <ListItemAvatar>
-                <Avatar alt={chats.author} src={chats.img} />
+            <Link to={`/home/${chats.id}`}>
+                <ListItemAvatar>
+                    <Avatar alt={chats.name} src={chats.img} />
                 </ListItemAvatar>
-                <ListItemText primary={chats.author} />
+                <ListItemText primary={chats.name} />
+            </Link>
         </ListItem>
-    ),[]);
+    );
 
     return (
         <div className="chatList">
             <List>
-            {chats.map(renderChatList)}
+            {Object.values(chats).map(renderChatList)}
             </List>
         </div>
     );

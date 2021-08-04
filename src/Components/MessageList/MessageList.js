@@ -1,6 +1,6 @@
 import './messageList.css';
 import React, { useCallback, useRef, useEffect } from "react";
-import { Message } from "./Message";
+import { Message } from "../Message/Message";
 
 export const MessageList = ({ messageList }) => {
     const renderMessageList = useCallback((mess) =>(
