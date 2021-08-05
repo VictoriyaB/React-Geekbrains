@@ -1,15 +1,17 @@
 import './messageList.css';
 import React, { useCallback, useRef, useEffect } from "react";
-import { Message } from "./Message";
+import { Message } from "../Message/Message";
 
 export const MessageList = ({ messageList }) => {
     const renderMessageList = useCallback((mess) =>(
         <Message text={mess.text} author={mess.author} key={mess.id}/>
     ), []);
+
     const messagesEndRef = useRef(null);
+    
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    };
+    }
 
     useEffect(() => {
         scrollToBottom()
@@ -21,4 +23,4 @@ export const MessageList = ({ messageList }) => {
             <div ref={messagesEndRef} />
         </div>
     );
-};
+}

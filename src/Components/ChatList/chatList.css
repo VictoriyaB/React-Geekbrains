@@ -1,0 +1,16 @@
+a {
+    color: #fafafa;
+}
+
+.chatList {
+    background-color: #f44336;
+    border-radius: 5px;
+    min-height: 500px;
+    align-self: flex-start;
+    padding: 10px;
+}
+
+.activ-chat {
+    background: rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
