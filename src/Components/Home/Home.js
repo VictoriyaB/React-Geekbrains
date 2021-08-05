@@ -25,7 +25,7 @@ const initialChats = {
         messages: [],
         img: null,
     },
-};
+}
 
 export const Home = () => {
     const { chatId } = useParams();
@@ -75,7 +75,7 @@ export const Home = () => {
         <>
         <h1 className="header">Select a chat</h1>
         <div className="chat-wrapper">
-            <ChatList chats={chats} />
+            <ChatList chats={chats} chatId={chatId}/>
             <div className="messageList-wrapper">
                 {!!chatId && <div>
                     <MessageList messageList={chats[chatId].messages} />
