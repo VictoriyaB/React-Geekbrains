@@ -9,21 +9,21 @@ import './App.css';
 export const Router = () => {
     return (
         <BrowserRouter>
-        <div className="App">
-            <ul className="App-list" >
-                <li>
-                    <Link to="/home" className="App-link"><HomeIcon />Home</Link>
-                </li>
-                <li>
-                    <Link to="/profile" className="App-link"><AccountBoxIcon />Profile</Link>
-                </li>
-            </ul>
+            <div className="App">
+                <ul className="App-list" >
+                    <li>
+                        <Link to="/home" className="App-link"><HomeIcon />Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/profile" className="App-link"><AccountBoxIcon />Profile</Link>
+                    </li>
+                </ul>
 
-            <Switch>
-                <Route path="/profile"><Profile /></Route>
-                <Route path="/home/:chatId?" ><Home /></Route>
-                <Route path="*"><h2 className="page404">Страница не существует</h2></Route>
-            </Switch>
+                <Switch>
+                    <Route path="/profile"><Profile /></Route>
+                    <Route path="/home/:chatId?" ><Home /></Route>
+                    <Route path="*"><h2 className="page404">Страница не существует</h2></Route>
+                </Switch>
             </div> 
         </BrowserRouter>
     );

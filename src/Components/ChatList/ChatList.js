@@ -7,10 +7,10 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 
-export const ChatList = ({ chats }) => {
+export const ChatList = ({ chats, chatId }) => {
 
     const renderChatList = (chats)=> (
-        <ListItem key={chats.id}>
+        <ListItem key={chats.id} className={(chatId===chats.id) ? "activ-chat" : ""} >
             <Link to={`/home/${chats.id}`}>
                 <ListItemAvatar>
                     <Avatar alt={chats.name} src={chats.img} />
@@ -27,4 +27,4 @@ export const ChatList = ({ chats }) => {
             </List>
         </div>
     );
-};
+}

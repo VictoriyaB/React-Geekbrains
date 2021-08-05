@@ -25,6 +25,13 @@ const useStyles = makeStyles({
     }
 });
 
+const inputProps = {
+    id: 'filled-size-small',
+    label: 'Введите сообщение', 
+    variant: 'filled',
+    size: 'small',
+}
+
 export const MessageForm = ({ onSendMessage }) => {
     const [value, setvalue] = useState('');
     const classes = useStyles();
@@ -44,26 +51,16 @@ export const MessageForm = ({ onSendMessage }) => {
         inputRef.current?.focus();
     }
 
-
     useEffect(() => {
         inputRef.current?.focus();
     },[]);
     
     return (
-        
         <form className="messageForm" onSubmit={handleSubmit}>
-            <TextField id="filled-size-small" label="Введите сообщение" 
-            variant="filled" 
-            size="small"
-            className={classes.inputRoot}
-            inputRef={inputRef}
-            value={value} onChange={handleChange}/>
-            <Button variant="contained" type="submit" 
-            className={classes.buttonRoot}
-            >Отправить</Button>
+            <TextField className={classes.inputRoot} inputRef={inputRef} value={value} onChange={handleChange} {...inputProps}/>
+            <Button variant="contained" type="submit" className={classes.buttonRoot}>Отправить</Button>
         </form>
     );
-
 }
 
 
