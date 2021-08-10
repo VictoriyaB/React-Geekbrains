@@ -1,5 +1,5 @@
 import './messageForm.css';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
@@ -40,7 +40,7 @@ export const MessageForm = ({ onSendMessage }) => {
     const handleChange = (event) =>
         setvalue(event.target.value);
     
-    const handleSubmit = (event) => {
+    const handleSubmit = useCallback((event) => {
         event.preventDefault();
         onSendMessage({
             author: 'Me',
@@ -48,12 +48,12 @@ export const MessageForm = ({ onSendMessage }) => {
             id: Date.now()
         });
         setvalue('');
-        inputRef.current?.focus();
-    }
+    },[onSendMessage,value]
+    );
 
     useEffect(() => {
         inputRef.current?.focus();
-    },[]);
+    },[handleSubmit]);
     
     return (
         <form className="messageForm" onSubmit={handleSubmit}>

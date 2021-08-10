@@ -1,0 +1,14 @@
+.profileWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileName {
+    text-align: center;
+    color: #e0e0e0;
+}
+
+.profileButton {
+    width: 200px;
+    align-self: center;
+}
