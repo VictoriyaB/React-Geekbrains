@@ -1,17 +1,15 @@
-import { PROFILE_SHOW_NAME } from "./actionTypes"
+import { PROFILE_SET_NAME } from "./actionTypes"
 
 const initialState = {
-    showName: false,
-    name: ''
+    name: 'Me'
 }
 
 export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case (PROFILE_SHOW_NAME): {
+        case (PROFILE_SET_NAME): {
             return {
                 ...state,
-                showName: !state.showName,
-                name: 'Victoria B.'
+                name: action.payload
             }
         }
         default: return state;

@@ -8,7 +8,30 @@
     color: #e0e0e0;
 }
 
-.profileButton {
-    width: 200px;
+.profileForm {
     align-self: center;
+}
+
+.profileButton, .profileInput {
+    height: 30px;
+    border: none;
+    box-sizing: border-box;
+    
+}
+
+.profileButton {
+    width: 100px;
+    border-radius: 0 5px 5px 0;
+    background-color: #616161;
+    color: #fafafa;
+}
+
+.profileButton:hover {
+    background-color: #f44336;
+}
+
+.profileInput {
+    outline: none;
+    padding: 5px;
+    border-radius: 5px 0  0 5px;
 }
