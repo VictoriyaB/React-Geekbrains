@@ -2,6 +2,10 @@ a {
   text-decoration: none; 
 }
 
+h2 {
+  text-align: center;
+}
+
 .App {
   background-color: #282c34;
   min-height: 100vh;

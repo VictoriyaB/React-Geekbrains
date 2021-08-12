@@ -1,10 +1,10 @@
+import './App.css';
 import React from 'react';
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
-import { Profile } from '../Pfofile/Profile';
-import { Home } from '../Home/Home';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import './App.css';
+import { Profile } from '../Profile/Profile';
+import { Home } from '../Home/Home';
 
 export const Router = () => {
     return (
@@ -20,6 +20,7 @@ export const Router = () => {
                 </ul>
 
                 <Switch>
+                    <Route path="/" exact><h2>WELCOME</h2></Route>
                     <Route path="/profile"><Profile /></Route>
                     <Route path="/home/:chatId?" ><Home /></Route>
                     <Route path="*"><h2 className="page404">Страница не существует</h2></Route>

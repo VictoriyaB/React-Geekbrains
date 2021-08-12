@@ -1,3 +1,4 @@
+import { AUTHORS } from "../../../constants";
 import { ADD_CHAT, DELETE_CHAT, SEND_MESSAGE } from "./actionTypes"
 
 export const addChat = (chatId, name) => ({
@@ -20,3 +21,17 @@ export const sendMessage = (chatId, message) => ({
         message,
     }
 });
+
+export const sendMessageFromRobot = (chatId, message) => (dispatch) => {
+    dispatch(sendMessage(chatId, message));
+    if (message.author !== AUTHORS.robot) {
+        const robotMessage = {
+            author: AUTHORS.robot,
+            text: `Все говорят "${message.text}", а ты купи слона!`
+        };
+        setTimeout(() => {
+            dispatch(sendMessage(chatId, robotMessage));
+        }, 4000);
+        return () => clearTimeout();
+    }    
+}
