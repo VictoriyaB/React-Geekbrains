@@ -13,7 +13,7 @@ export const ChatList = ({ chats, chatId }) => {
 
     const renderChatList = (chats)=> (
         <ListItem key={chats.id} className={(chatId===chats.id) ? "activ-chat" : ""} >
-            <Link to={`/home/${chats.id}`}>
+            <Link to={`/chats/${chats.id}`}>
                 <ListItemAvatar>
                     <Avatar alt={chats.name} src={chats.img} />
                 </ListItemAvatar>

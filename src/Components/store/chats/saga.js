@@ -5,7 +5,7 @@ import { sendMessage } from "./actions";
 import { SEND_MESSAGE } from "./actionTypes"
 
 function* onSendMessage(action) {
-    if (action.payload.message.author !== AUTHORS.robot && action.payload.message.author !== 'Admin') {
+    if (action.payload.chatId === 'robotChat' && action.payload.message.author !== AUTHORS.robot && action.payload.message.author !== 'Admin') {
         yield delay(1000);
 
         yield put(
