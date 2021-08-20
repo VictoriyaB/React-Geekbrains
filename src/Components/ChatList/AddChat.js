@@ -1,16 +1,15 @@
-import './addChat.css'
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
+import { uid } from 'uid';
+import { useInput } from '../utils/useInput';
 import { addChat } from '../store/chats/actions';
+import { Form } from '../Form/Form';
+import { useStyles, inputProps, buttonProps} from './AddChatStyles'
 
 export const AddChat = () => {
     const dispatch = useDispatch();
 
-    const [value, setvalue] = useState('');
-
-    const handleChange = (e) => { 
-        setvalue(e.target.value);
-    }
+    const { value, handleChange, reset} = useInput('');
     
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,16 +17,21 @@ export const AddChat = () => {
     if (!value) {
         return;
     }
-    const newId = `chat${Date.now()}`
+    const newId = `chat${uid()}`
 
     dispatch(addChat(newId, value));
 
-    setvalue('');
+    reset();
 }
 
     return (
-        <form className="addChatForm" onSubmit={handleSubmit}>
-            <input className="addChatInput" placeholder="Add a chat name" onChange={handleChange} value={value} />
-        </form>
+        <Form
+            value={value}
+            useStyles={useStyles}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            inputProps={inputProps}
+            buttonProps={buttonProps}
+        />
     )
 }

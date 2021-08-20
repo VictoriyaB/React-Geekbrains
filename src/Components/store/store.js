@@ -1,11 +1,33 @@
-import { combineReducers, createStore } from "redux";
-import { chatsReducer } from "./chats/reducer";
-import { profileReducer } from "./profile/reducer";
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
+import createSagaMiddleware from '@redux-saga/core';
+import { chatsReducer } from './chats/reducer';
+import { profileReducer } from './profile/reducer';
+import { chatsSaga } from './chats/saga';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const persistConfig = {
+    key: 'GB-messenger',
+    storage,
+}
+
+const rootReducer = combineReducers({
+    chats: chatsReducer,
+    profile: profileReducer,
+});
+
+const sagaMiddleware = createSagaMiddleware();
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = createStore(
-    combineReducers({
-        chats: chatsReducer,
-        profile: profileReducer,
-    }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    persistedReducer,
+    composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
 );
+
+export const persistor = persistStore(store);
+
+sagaMiddleware.run(chatsSaga);

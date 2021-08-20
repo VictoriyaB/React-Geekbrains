@@ -1,16 +1,17 @@
+import { uid } from "uid";
 import { ADD_CHAT, DELETE_CHAT, SEND_MESSAGE } from "./actionTypes"
 
 const initialState = {
-    chat1: {
+    robotChat: {
         name: 'Robot',
-        id: 'chat1',
-        messages: [{author:'Robot', text:'Привет! Купи слона!', id: Date.now()}],
-        img: '/static/images/avatar/123.jpg', 
+        id: 'robotChat',
+        messages: [{author:'Robot', text:'Привет! Купи слона!', id: uid()}],
+        img: '/static/images/avatar/123.jpg',
         },
     chat2: {
         name: 'User2',
         id: 'chat2',
-        messages: [{author:'User2', text:'Привет!', id: Date.now()}],
+        messages: [{author:'User2', text:'Привет!', id: uid()}],
         img: null,
         },    
     chat3: {
@@ -50,6 +51,7 @@ export const chatsReducer = (state = initialState, { type, payload }) => {
                 }
             }
         }
+
         default: return state;
     }
 }
