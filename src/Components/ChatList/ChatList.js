@@ -6,6 +6,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
+import { AddChat } from './AddChat';
+import { DeleteChat } from './DeleteChat';
 
 export const ChatList = ({ chats, chatId }) => {
 
@@ -17,14 +19,19 @@ export const ChatList = ({ chats, chatId }) => {
                 </ListItemAvatar>
                 <ListItemText primary={chats.name} />
             </Link>
+            <DeleteChat chatId={chats.id} />
         </ListItem>
     );
 
     return (
         <div className="chatList">
             <List>
-            {Object.values(chats).map(renderChatList)}
+                {Object.values(chats).map(renderChatList)}
             </List>
+            <div className="addChatWrapper">
+                <span>Add a chat</span>
+                <AddChat/>
+            </div>
         </div>
     );
 }
