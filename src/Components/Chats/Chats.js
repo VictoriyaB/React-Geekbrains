@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MessageList } from '../MessageList/MessageList';
 import { MessageForm } from '../MessageForm/MessageForm';
 import { ChatList } from '../ChatList/ChatList';
-import { sendMessage, sendMessageFromRobot } from '../store/chats/actions';
+import { sendMessageWithReply } from '../store/chats/actions';
 import { selectChats } from '../store/chats/selectors';
 
 export const Chats = () => {
@@ -17,13 +17,8 @@ export const Chats = () => {
     const dispatch = useDispatch();
     
     const handleSendMessage = useCallback((newMessage) => {
-            if(chatId !== 'robotChat') {
-                dispatch(sendMessage(chatId, newMessage));
-            } else {
-            dispatch(sendMessageFromRobot(chatId, newMessage));
-            };
-        },
-        [chatId, dispatch]
+            dispatch(sendMessageWithReply(chatId, newMessage));
+        },[chatId]
     );
 
     if (chatId && !chats[chatId]) {

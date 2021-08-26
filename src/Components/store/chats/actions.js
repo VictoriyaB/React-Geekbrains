@@ -14,6 +14,14 @@ export const deleteChat = (chatId) => ({
     payload: chatId,
 });
 
+export const sendMessageWithReply = (chatId, message) => (dispatch) => {
+    if(chatId !== 'robotChat') {
+        dispatch(sendMessage(chatId, message));
+    } else {
+    dispatch(sendMessageFromRobot(chatId, message));
+    };
+}
+
 export const sendMessage = (chatId, message) => ({
     type: SEND_MESSAGE,
     payload: {
